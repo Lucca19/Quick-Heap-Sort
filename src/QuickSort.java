@@ -1,4 +1,6 @@
 public class QuickSort {
+
+    static int Contagem = 0;
     public static void main(String[] args) {
         int[] vetor = new int[10];
 
@@ -6,24 +8,24 @@ public class QuickSort {
             vetor[i] = (int) Math.floor(Math.random() * vetor.length);
         }
 
+        System.out.println();
         System.out.println("Vetor sem ordenar:");
         for (int i = 0; i < vetor.length; i++) {
             System.out.print(vetor[i] + " ");
         }
 
+        long Inicio = System.currentTimeMillis();
         quicksort(vetor, 0, vetor.length - 1);
+        long Fim = System.currentTimeMillis();
 
-
-        System.out.println("\n \nVetor ordenado :");
+        System.out.println("\n\nVetor ordenado :");
         for (int i = 0; i < vetor.length; i++) {
             System.out.print(vetor[i] + " ");
-            System.out.println();
         }
 
-        System.out.println("Quantidade de trocas feitas:"); // só falta esse pra terminar 
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.println();
-        }
+        System.out.println("\n\nContagem das trocas : " + Contagem);
+
+        System.out.println("\nTempo de execução do programa: " + ( Fim - Inicio ));
     }
 
     static void quicksort(int[] vetor, int esquerda, int direita){
@@ -40,7 +42,6 @@ public class QuickSort {
         int pivo = vetor[meio];
         int i = esquerda - 1;
         int j = direita + 1;
-        int quant = 0;
 
         while(true){ // Faz a ordenação do pivo.
             do{
@@ -55,7 +56,7 @@ public class QuickSort {
             int aux = vetor[i];
             vetor[i] = vetor[j];
             vetor[j] = aux;
-            quant++;
+            Contagem++;
         }
     }
 }
